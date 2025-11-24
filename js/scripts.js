@@ -6,4 +6,6 @@ document.open()
 
 document.write(favouriteFood);
 
+document.close()
+
 console.log(favouriteFood);
