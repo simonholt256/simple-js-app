@@ -1,4 +1,4 @@
-let pokemonList = [{
+const pokemonList = [{
     name: "Bulbasaur",
     heightCm: 71, 
     type: "Grass",
@@ -32,15 +32,13 @@ console.log("the current pokemon is " + pokemonList[currentPokemonIndex].name +
             pokemonList[currentPokemonIndex].heightCm + " tall.");
             
 
-pokemonList.for
-
 for (let i = 0; i < pokemonList.length; i++) {
   console.log(i);
 
   document.write(
     "<br> <br>" + pokemonList[i].name +  "<br> (Type: " 
     + pokemonList[i].type + ") (Height: "
-    + pokemonList[i].heightCm + ")");
+    + pokemonList[i].heightCm + "cm)");
   
   if (pokemonList[i].heightCm > 70) {
     document.write(" Wow! That's big!")
