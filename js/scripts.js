@@ -36,11 +36,12 @@ for (let i = 0; i < pokemonList.length; i++) {
   console.log(i);
 
   document.write(
-    "<br> <br>" + pokemonList[i].name +  "<br> (Type: " 
+    pokemonList[i].name +  "<br> (Type: " 
     + pokemonList[i].type + ") (Height: "
     + pokemonList[i].heightCm + "cm)");
-  
-  if (pokemonList[i].heightCm > 70) {
-    document.write(" Wow! That's big!")
-  }
+
+  let tallCheck = pokemonList[i].heightCm > 70 ? " Wow! That's big! <br> <br>" : "<br> <br>";
+
+  document.write(tallCheck);
+
 };
