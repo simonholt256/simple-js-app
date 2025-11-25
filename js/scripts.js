@@ -1,29 +1,29 @@
 let pokemonList = [{
     name: "Bulbasaur",
     heightCm: 71, 
-    type: "grass",
+    type: "Grass",
     poisionous: true,
     weaknesses: ["Fire", "Ice", "Flying", "Psychic"]
   }, {
     name: "Charmander ",
     heightCm: 61,
-    type: "fire",
+    type: "Fire",
     poisionous: false,
     weaknesses: ["Water", "Ground", "Rock"]
   }, {
     name: "Squirtle",
     heightCm: 50,
-    type: "water",
+    type: "Water",
     poisionous: false,
     weaknesses: ["Grass", "Electric"]
   }, {
     name: "Diglett",
     heightCm: 20,
-    type: "ground",
+    type: "Ground",
     poisionous: false,
     weaknesses: ["Water", "Grass", "Ice"]
   }
-]
+];
 
 let currentPokemonIndex = 1;
 
@@ -34,8 +34,15 @@ console.log("the current pokemon is " + pokemonList[currentPokemonIndex].name +
 
 pokemonList.for
 
-for (let i = 0; i <= pokemonList.length; i++) {
+for (let i = 0; i < pokemonList.length; i++) {
   console.log(i);
 
-  document.write(pokemonList[i].name + "/");
-}
+  document.write(
+    "<br> <br>" + pokemonList[i].name +  "<br> (Type: " 
+    + pokemonList[i].type + ") (Height: "
+    + pokemonList[i].heightCm + ")");
+  
+  if (pokemonList[i].heightCm > 70) {
+    document.write(" Wow! That's big!")
+  }
+};
