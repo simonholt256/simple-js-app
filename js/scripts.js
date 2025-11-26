@@ -36,7 +36,6 @@ let pokemonRepository = (function () {
   function add (item) {
     if (typeof item !== "object") {
       console.log("not an object")
-      return
     } else if (
       Object.keys(item)[0] !== Object.keys(pokemonList[0])[0] ||
       Object.keys(item)[1] !== Object.keys(pokemonList[0])[1] ||
@@ -50,9 +49,21 @@ let pokemonRepository = (function () {
     }
   }
 
+  function findByName (name) {
+    pokemonList.forEach((item) => {
+      if (item.name === name) {
+        console.log("The pokemon " + item.name + " has been found")
+      } else {
+        console.log("The pokemon " + item.name + " has NOT been found")
+      }
+    })
+  
+  }
+
   return {
     getAll: getAll,
-    add: add
+    add: add,
+    findByName: findByName
   }
 
 })();
@@ -92,6 +103,40 @@ pokemonRepository.add({
       weaknesses: ["Ground", "Psychic"]
     
     });
+
+
+// find by name 
+
+pokemonRepository.findByName("Diglett");
+
+
+/* console.log(pokemonRepository.getAll()[1].name)
+
+let pokemonTest = pokemonRepository.getAll();
+
+let newPokemonTest = pokemonTest.filter(function(value) {
+  return value === 9;
+});
+
+console.log(newPokemonTest)
+
+console.log(pokemonTest)
+
+let testArray = [4, 6, 7, 7, 9, 6, 2, 1, 4]
+
+let newArray = testArray.filter(function(value) {
+  return value === 9;
+});
+
+console.log(newArray)
+
+pokemonTest.filter(item, "Diglett")
+
+function filterByName(item, searchedName) {
+  if (item.name == searchedName) {
+
+  }
+}; */
 
 // DOM
 
