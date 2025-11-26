@@ -61,7 +61,7 @@ pokemonRepository.add({
             pokemonList[currentPokemonIndex].heightCm + " tall."); */
             
 
-/* pokemonList.forEach(function(pokemon) {
+pokemonRepository.getAll().forEach(function(pokemon) {
   
   document.write(
     pokemon.name +  "<br> (Type: " 
@@ -72,5 +72,5 @@ pokemonRepository.add({
 
   document.write(tallCheck);
 })
-*/
+
 
