@@ -1,3 +1,5 @@
+// IIFE repo
+
 let pokemonRepository = (function () {
 
   const pokemonList = [{
@@ -42,7 +44,12 @@ let pokemonRepository = (function () {
 
 })();
 
+// getAll function check
+
 console.log(pokemonRepository.getAll());
+
+
+// add function check
 
 pokemonRepository.add({
       name: "Sandshrew",
@@ -52,14 +59,9 @@ pokemonRepository.add({
       weaknesses: ["Water", "Grass", "Ice"]
     });
 
-// console.log(pokemonRepository.getAll());
 
-// let currentPokemonIndex = 1;
 
-/* console.log("the current pokemon is " + pokemonList[currentPokemonIndex].name +
-            "a " + pokemonList[currentPokemonIndex].type + " type pokemon, that is " +
-            pokemonList[currentPokemonIndex].heightCm + " tall."); */
-            
+// DOM
 
 pokemonRepository.getAll().forEach(function(pokemon) {
   
