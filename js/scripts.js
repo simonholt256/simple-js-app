@@ -44,16 +44,4 @@ pokemonList.forEach(function(pokemon) {
   document.write(tallCheck);
 })
 
-/* for (let i = 0; i < pokemonList.length; i++) {
-  console.log(i);
 
-  document.write(
-    pokemonList[i].name +  "<br> (Type: " 
-    + pokemonList[i].type + ") (Height: "
-    + pokemonList[i].heightCm + "cm)");
-
-  let tallCheck = pokemonList[i].heightCm > 70 ? " Wow! That's big! <br> <br>" : "<br> <br>";
-
-  document.write(tallCheck);
-
-}; */
