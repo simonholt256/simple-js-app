@@ -34,7 +34,20 @@ let pokemonRepository = (function () {
   }
 
   function add (item) {
-    pokemonList.push(item)
+    if (typeof item !== "object") {
+      console.log("not an object")
+      return
+    } else if (
+      Object.keys(item)[0] !== Object.keys(pokemonList[0])[0] ||
+      Object.keys(item)[1] !== Object.keys(pokemonList[0])[1] ||
+      Object.keys(item)[2] !== Object.keys(pokemonList[0])[2] ||
+      Object.keys(item)[3] !== Object.keys(pokemonList[0])[3] ||
+      Object.keys(item)[4] !== Object.keys(pokemonList[0])[4]) {
+      console.log("keys don't match")
+    } else {
+      pokemonList.push(item)
+      console.log("is object with matching keys")
+    }
   }
 
   return {
@@ -51,6 +64,8 @@ console.log(pokemonRepository.getAll());
 
 // add function check
 
+// Should work and console.log "is object with matching keys"
+
 pokemonRepository.add({
       name: "Sandshrew",
       heightCm: 61,
@@ -60,6 +75,23 @@ pokemonRepository.add({
     });
 
 
+// Should console.log "not an object"
+
+pokemonRepository.add(
+      "Sandshrew"
+    );
+
+
+// Should console.log "keys don't match"
+
+pokemonRepository.add({
+      name: "Arbok",
+      heightFeetInches: `11' 06"`,
+      type: "Poison",
+      poisionous: true,
+      weaknesses: ["Ground", "Psychic"]
+    
+    });
 
 // DOM
 
