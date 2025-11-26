@@ -32,7 +32,19 @@ console.log("the current pokemon is " + pokemonList[currentPokemonIndex].name +
             pokemonList[currentPokemonIndex].heightCm + " tall.");
             
 
-for (let i = 0; i < pokemonList.length; i++) {
+pokemonList.forEach(function(pokemon) {
+  
+  document.write(
+    pokemon.name +  "<br> (Type: " 
+    + pokemon.type + ") (Height: "
+    + pokemon.heightCm + "cm)");
+
+  let tallCheck = pokemon.heightCm > 70 ? " Wow! That's big! <br> <br>" : "<br> <br>";
+
+  document.write(tallCheck);
+})
+
+/* for (let i = 0; i < pokemonList.length; i++) {
   console.log(i);
 
   document.write(
@@ -44,4 +56,4 @@ for (let i = 0; i < pokemonList.length; i++) {
 
   document.write(tallCheck);
 
-};
+}; */
