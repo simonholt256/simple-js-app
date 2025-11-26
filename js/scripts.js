@@ -50,13 +50,20 @@ let pokemonRepository = (function () {
   }
 
   function findByName (name) {
+
+    let foundPokemon = false;
+
     pokemonList.forEach((item) => {
+
       if (item.name === name) {
         console.log("The pokemon " + item.name + " has been found")
-      } else {
-        console.log("The pokemon " + item.name + " has NOT been found")
-      }
+        foundPokemon = true;
+      } 
     })
+
+    if (foundPokemon === false) {
+      console.log("The pokemon " + name + " has NOT been found")
+    }
   
   }
 
@@ -107,36 +114,14 @@ pokemonRepository.add({
 
 // find by name 
 
+// should console.log "The Pokemon (name) has been found"
+
 pokemonRepository.findByName("Diglett");
 
+// should console.log "The Pokemon (name) has NOT been found"
 
-/* console.log(pokemonRepository.getAll()[1].name)
+pokemonRepository.findByName("Metapod");
 
-let pokemonTest = pokemonRepository.getAll();
-
-let newPokemonTest = pokemonTest.filter(function(value) {
-  return value === 9;
-});
-
-console.log(newPokemonTest)
-
-console.log(pokemonTest)
-
-let testArray = [4, 6, 7, 7, 9, 6, 2, 1, 4]
-
-let newArray = testArray.filter(function(value) {
-  return value === 9;
-});
-
-console.log(newArray)
-
-pokemonTest.filter(item, "Diglett")
-
-function filterByName(item, searchedName) {
-  if (item.name == searchedName) {
-
-  }
-}; */
 
 // DOM
 
