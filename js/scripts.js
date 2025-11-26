@@ -1,38 +1,67 @@
-const pokemonList = [{
-    name: "Bulbasaur",
-    heightCm: 71, 
-    type: "Grass",
-    poisionous: true,
-    weaknesses: ["Fire", "Ice", "Flying", "Psychic"]
-  }, {
-    name: "Charmander ",
-    heightCm: 61,
-    type: "Fire",
-    poisionous: false,
-    weaknesses: ["Water", "Ground", "Rock"]
-  }, {
-    name: "Squirtle",
-    heightCm: 50,
-    type: "Water",
-    poisionous: false,
-    weaknesses: ["Grass", "Electric"]
-  }, {
-    name: "Diglett",
-    heightCm: 20,
-    type: "Ground",
-    poisionous: false,
-    weaknesses: ["Water", "Grass", "Ice"]
+let pokemonRepository = (function () {
+
+  const pokemonList = [{
+      name: "Bulbasaur",
+      heightCm: 71, 
+      type: "Grass",
+      poisionous: true,
+      weaknesses: ["Fire", "Ice", "Flying", "Psychic"]
+    }, {
+      name: "Charmander ",
+      heightCm: 61,
+      type: "Fire",
+      poisionous: false,
+      weaknesses: ["Water", "Ground", "Rock"]
+    }, {
+      name: "Squirtle",
+      heightCm: 50,
+      type: "Water",
+      poisionous: false,
+      weaknesses: ["Grass", "Electric"]
+    }, {
+      name: "Diglett",
+      heightCm: 20,
+      type: "Ground",
+      poisionous: false,
+      weaknesses: ["Water", "Grass", "Ice"]
+    }
+  ]
+
+  function getAll () {
+      return pokemonList
   }
-];
 
-let currentPokemonIndex = 1;
+  function add (item) {
+    pokemonList.push(item)
+  }
 
-console.log("the current pokemon is " + pokemonList[currentPokemonIndex].name +
+  return {
+    getAll: getAll,
+    add: add
+  }
+
+})();
+
+console.log(pokemonRepository.getAll());
+
+pokemonRepository.add({
+      name: "Sandshrew",
+      heightCm: 61,
+      type: "Ground",
+      poisionous: false,
+      weaknesses: ["Water", "Grass", "Ice"]
+    });
+
+// console.log(pokemonRepository.getAll());
+
+// let currentPokemonIndex = 1;
+
+/* console.log("the current pokemon is " + pokemonList[currentPokemonIndex].name +
             "a " + pokemonList[currentPokemonIndex].type + " type pokemon, that is " +
-            pokemonList[currentPokemonIndex].heightCm + " tall.");
+            pokemonList[currentPokemonIndex].heightCm + " tall."); */
             
 
-pokemonList.forEach(function(pokemon) {
+/* pokemonList.forEach(function(pokemon) {
   
   document.write(
     pokemon.name +  "<br> (Type: " 
@@ -43,5 +72,5 @@ pokemonList.forEach(function(pokemon) {
 
   document.write(tallCheck);
 })
-
+*/
 
