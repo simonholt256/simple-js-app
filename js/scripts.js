@@ -53,6 +53,10 @@ let pokemonRepository = (function () {
       console.log(`is object with matching keys. ${item.name} has been added to PokemonList`)
     }
 
+  } 
+
+ 
+
   function findByName (name) {
     const found = pokemonList.find(item => item.name === name);
 
