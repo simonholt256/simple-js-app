@@ -36,33 +36,30 @@ let pokemonRepository = (function () {
   function add (item) {
     if (typeof item !== "object") {
       console.log("not an object")
-    } else if (
-      Object.keys(item)[0] !== Object.keys(pokemonList[0])[0] ||
-      Object.keys(item)[1] !== Object.keys(pokemonList[0])[1] ||
-      Object.keys(item)[2] !== Object.keys(pokemonList[0])[2] ||
-      Object.keys(item)[3] !== Object.keys(pokemonList[0])[3] ||
-      Object.keys(item)[4] !== Object.keys(pokemonList[0])[4]) {
-      console.log("keys don't match")
+      return
+    } 
+    
+    const requiredKeys = Object.keys(pokemonList[0]);
+    console.log(requiredKeys)
+
+    const itemKeys = Object.keys(item);
+    console.log(itemKeys)
+
+    const hasAllKeys = requiredKeys.every(key => itemKeys.includes(key));
+
+    if (!hasAllKeys) {
+      console.log("key don't match")
     } else {
-      pokemonList.push(item)
-      console.log("is object with matching keys")
+      console.log(`is object with matching keys. ${item.name} has been added to PokemonList`)
     }
-  }
 
   function findByName (name) {
+    const found = pokemonList.find(item => item.name === name);
 
-    let foundPokemon = false;
-
-    pokemonList.forEach((item) => {
-
-      if (item.name === name) {
-        console.log("The pokemon " + item.name + " has been found")
-        foundPokemon = true;
-      } 
-    })
-
-    if (foundPokemon === false) {
-      console.log("The pokemon " + name + " has NOT been found")
+    if (found) {
+      console.log(`The pokemon ${found.name} has been found`);
+    } else {
+      console.log(`The pokemon ${name} has NOT been found`);
     }
   
   }
