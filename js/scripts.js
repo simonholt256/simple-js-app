@@ -104,13 +104,6 @@ let pokemonRepository = (function () {
 
 })();
 
-// getAll function check
-
-console.log(pokemonRepository.getAll());
-
-
-// add function check
-
 // Should work and console.log "is object with matching keys"
 
 pokemonRepository.add({
@@ -122,53 +115,10 @@ pokemonRepository.add({
     });
 
 
-// Should console.log "not an object"
-
-pokemonRepository.add(
-      "Sandshrew"
-    );
-
-
-// Should console.log "keys don't match"
-
-pokemonRepository.add({
-      name: "Arbok",
-      heightFeetInches: `11' 06"`,
-      type: "Poison",
-      poisionous: true,
-      weaknesses: ["Ground", "Psychic"]
-    
-    });
-
-
-// find by name 
-
-// should console.log "The Pokemon (name) has been found"
-
-pokemonRepository.findByName("Diglett");
-
-// should console.log "The Pokemon (name) has NOT been found"
-
-pokemonRepository.findByName("Metapod");
-
-
 // DOM
 
 pokemonRepository.getAll().forEach(function(pokemon) {
 
   pokemonRepository.addListItem(pokemon)
+
 });
-
-
-/*
-
-  document.write(
-    pokemon.name +  "<br> (Type: " 
-    + pokemon.type + ") (Height: "
-    + pokemon.heightCm + "cm)");
-
-  let tallCheck = pokemon.heightCm > 70 ? " Wow! That's big! <br> <br>" : "<br> <br>";
-
-  document.write(tallCheck);
-
-*/
