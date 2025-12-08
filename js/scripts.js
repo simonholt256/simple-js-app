@@ -55,6 +55,25 @@ let pokemonRepository = (function () {
 
   } 
 
+  function addListItem (pokemon) {
+    const pokemonListElement = document.querySelector('.pokemon-list');
+
+    let listItem = document.createElement('li');
+
+    let button = document.createElement('button');
+
+    button.innerText = pokemon.name;
+
+    listItem.appendChild(button);
+
+    pokemonListElement.appendChild(listItem);
+  }
+
+  function showDetails (pokemon) {
+
+  console.log(pokemon);
+
+  }
  
 
   function findByName (name) {
@@ -71,6 +90,7 @@ let pokemonRepository = (function () {
   return {
     getAll: getAll,
     add: add,
+    addListItem: addListItem,
     findByName: findByName
   }
 
@@ -127,7 +147,13 @@ pokemonRepository.findByName("Metapod");
 // DOM
 
 pokemonRepository.getAll().forEach(function(pokemon) {
-  
+
+  pokemonRepository.addListItem(pokemon)
+});
+
+
+/*
+
   document.write(
     pokemon.name +  "<br> (Type: " 
     + pokemon.type + ") (Height: "
@@ -136,6 +162,5 @@ pokemonRepository.getAll().forEach(function(pokemon) {
   let tallCheck = pokemon.heightCm > 70 ? " Wow! That's big! <br> <br>" : "<br> <br>";
 
   document.write(tallCheck);
-})
 
-
+*/
