@@ -1,7 +1,40 @@
+:root {
+  --primary-color: rgb(189, 231, 255);
+  --secondary-color: rgb(6, 164, 255);
+  --accent-color: rgb(120, 207, 203);
+  --accent-hover: rgb(0, 255, 242);
+  --accent-active: rgb(255, 170, 251);
+  --button-color: rgb(219, 225, 228);
+}
+
 * {
-    font-family: "Nunito Sans", sans-serif;;
+    font-family: "Nunito Sans", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     margin: 40px;
+}
+
+ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+button {
+    margin: 4px;
+    width: 100px;
+    border: var(--accent-color) solid 1px;
+    border-radius: 10px;
+}
+
+button:hover {
+    border: var(--accent-hover) solid 1px;
+    cursor: pointer;
+}
+
+button:active {
+    border-color: var(--accent-active);
 }
