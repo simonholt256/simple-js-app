@@ -2,31 +2,7 @@
 
 let pokemonRepository = (function () {
 
-  const pokemonList = [{
-      name: "Bulbasaur",
-      heightCm: 71, 
-      type: "Grass",
-      poisionous: true,
-      weaknesses: ["Fire", "Ice", "Flying", "Psychic"]
-    }, {
-      name: "Charmander ",
-      heightCm: 61,
-      type: "Fire",
-      poisionous: false,
-      weaknesses: ["Water", "Ground", "Rock"]
-    }, {
-      name: "Squirtle",
-      heightCm: 50,
-      type: "Water",
-      poisionous: false,
-      weaknesses: ["Grass", "Electric"]
-    }, {
-      name: "Diglett",
-      heightCm: 20,
-      type: "Ground",
-      poisionous: false,
-      weaknesses: ["Water", "Grass", "Ice"]
-    }
+  const pokemonList = [
   ]
 
   function getAll () {
@@ -34,7 +10,7 @@ let pokemonRepository = (function () {
   }
 
   function add (item) {
-    if (typeof item !== "object") {
+    /* if (typeof item !== "object") {
       console.log("not an object")
       return
     } 
@@ -52,7 +28,9 @@ let pokemonRepository = (function () {
     } else {
       console.log(`is object with matching keys. ${item.name} has been added to PokemonList`);
       pokemonList.push(item);
-    }
+    } */
+
+    pokemonList.push(item);
 
   } 
 
@@ -81,7 +59,10 @@ let pokemonRepository = (function () {
 
 
   function showDetails (pokemon) {
-    console.log(pokemon);
+    loadDetails(pokemon).then(function () {
+      console.log(pokemon);
+    });
+    
   }
  
 
@@ -96,24 +77,64 @@ let pokemonRepository = (function () {
   
   }
 
+  function loadList() {
+    return fetch('https://pokeapi.co/api/v2/pokemon/?limit=20').then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      json.results.forEach(function (item) {
+        let pokemon = {
+          name: item.name,
+          detailsUrl: item.url
+        };
+        add(pokemon);
+      });
+    }).catch(function (e) {
+      console.error(e);
+    })
+  }
+
+  function loadDetails(item) {
+    let url = item.detailsUrl;
+    return fetch(url).then(function (response) {
+      return response.json();
+    }).then(function (details) {
+      // Now we add the details to the item
+      item.imageUrl = details.sprites.front_default;
+      item.height = details.height;
+      item.types = details.types;
+    }).catch(function (e) {
+      console.error(e);
+    });
+  }
+
   return {
     getAll: getAll,
     add: add,
     addListItem: addListItem,
-    findByName: findByName
+    findByName: findByName,
+    loadList: loadList,
+    loadDetails: loadDetails
   }
 
 })();
 
+pokemonRepository.loadList().then(function() {
+  // Now the data is loaded!
+  pokemonRepository.getAll().forEach(function(pokemon){
+    pokemonRepository.addListItem(pokemon);
+  });
+});
+
 // Should work and console.log "is object with matching keys"
 
-pokemonRepository.add({
+/* pokemonRepository.add({
       name: "Sandshrew",
       heightCm: 61,
       type: "Ground",
       poisionous: false,
       weaknesses: ["Water", "Grass", "Ice"]
     });
+    */
 
 
 // DOM
