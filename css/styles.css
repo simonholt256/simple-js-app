@@ -49,6 +49,30 @@ button:active {
     border-color: var(--accent-active);
 }
 
+.loading-card-container {
+    position: fixed;
+    width: 0;
+    top: 60px;
+    left: 50%;
+}
+
+.loading-card {
+    position: relative;
+    width: 300px;
+    height: 100px;
+    margin-left: -150px;
+    background-color: rgb(221, 223, 224);
+    border: rgb(135, 255, 255) solid 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.hidden {
+    display: none;
+}
+
 @media all and (max-width: 500px) {
     button {
         transform: scale(1.3);
