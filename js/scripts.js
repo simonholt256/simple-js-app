@@ -50,7 +50,8 @@ let pokemonRepository = (function () {
     if (!hasAllKeys) {
       console.log("key don't match")
     } else {
-      console.log(`is object with matching keys. ${item.name} has been added to PokemonList`)
+      console.log(`is object with matching keys. ${item.name} has been added to PokemonList`);
+      pokemonList.push(item);
     }
 
   } 
