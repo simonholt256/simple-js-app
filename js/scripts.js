@@ -77,7 +77,21 @@ let pokemonRepository = (function () {
   
   }
 
+
+  function showLoadingMessage() {
+    let loader = document.querySelector('.loading-card-container')
+      loader.classList.remove('hidden')
+    }
+
+  function hideLoadingMessage() {
+    let loader = document.querySelector('.loading-card-container')
+      loader.classList.add('hidden')
+  }
+
   function loadList() {
+
+    showLoadingMessage();
+
     return fetch('https://pokeapi.co/api/v2/pokemon/?limit=20').then(function (response) {
       return response.json();
     }).then(function (json) {
@@ -87,13 +101,18 @@ let pokemonRepository = (function () {
           detailsUrl: item.url
         };
         add(pokemon);
+        hideLoadingMessage();
       });
     }).catch(function (e) {
       console.error(e);
+      hideLoadingMessage();
     })
   }
 
   function loadDetails(item) {
+
+    showLoadingMessage();
+
     let url = item.detailsUrl;
     return fetch(url).then(function (response) {
       return response.json();
@@ -102,8 +121,10 @@ let pokemonRepository = (function () {
       item.imageUrl = details.sprites.front_default;
       item.height = details.height;
       item.types = details.types;
+      hideLoadingMessage();
     }).catch(function (e) {
       console.error(e);
+      hideLoadingMessage();
     });
   }
 
