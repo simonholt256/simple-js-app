@@ -10,6 +10,9 @@ let pokemonRepository = (function () {
   }
 
   function add (item) {
+
+    // checks data types - may use again
+
     /* if (typeof item !== "object") {
       console.log("not an object")
       return
@@ -140,22 +143,10 @@ let pokemonRepository = (function () {
 })();
 
 pokemonRepository.loadList().then(function() {
-  // Now the data is loaded!
   pokemonRepository.getAll().forEach(function(pokemon){
     pokemonRepository.addListItem(pokemon);
   });
 });
-
-// Should work and console.log "is object with matching keys"
-
-/* pokemonRepository.add({
-      name: "Sandshrew",
-      heightCm: 61,
-      type: "Ground",
-      poisionous: false,
-      weaknesses: ["Water", "Grass", "Ice"]
-    });
-    */
 
 
 // DOM
@@ -166,11 +157,11 @@ pokemonRepository.getAll().forEach(function(pokemon) {
 
 });
 
+// fetching data
 
 fetch('https://pokeapi.co/api/v2/pokemon/').then(function (response) {
-  return response.json(); // This returns a promise!
+  return response.json(); 
 }).then(function (pokemonList) {
-  console.log(pokemonList); // The actual JSON response
+  console.log(pokemonList); 
 }).catch(function () {
-  // Error
 });
